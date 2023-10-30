@@ -3,14 +3,14 @@ const { getProductsWithAllergyOrIntoleranceInfo } = require('../src/9-products-w
 describe('9 - Crie uma função que retorne todos os produtos com informações sobre alergia ou intolerância', () => {
   it('ao buscar por produtos com informação de alergia ou intolerância, o valor retornado pela função deve ser um `array` cujo os elementos sejam do tipo `object`', () => {
     const receivedValue = getProductsWithAllergyOrIntoleranceInfo();
-    
     expect(Array.isArray(receivedValue)).toBe(true);
+    expect(receivedValue).not.toHaveLength(0);
     receivedValue.forEach(productObject => expect(typeof productObject).toBe('object') );
   });
 
   it('os objetos do array devem possuir, obrigatoriamente, as chaves `description` e `formattedPrice`', () => {
     const receivedValue = getProductsWithAllergyOrIntoleranceInfo();
-
+    expect(receivedValue).not.toHaveLength(0);
     receivedValue.forEach(productObject => {
       expect(productObject).toHaveProperty('description');
       expect(productObject).toHaveProperty('formattedPrice');
